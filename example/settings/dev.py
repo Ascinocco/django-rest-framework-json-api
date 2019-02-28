@@ -22,6 +22,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.auth',
     'django.contrib.admin',
+    'corsheaders',
     'rest_framework',
     'polymorphic',
     'example',
@@ -62,10 +63,13 @@ PASSWORD_HASHERS = ('django.contrib.auth.hashers.UnsaltedMD5PasswordHasher', )
 
 MIDDLEWARE = (
     'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 )
 
 INTERNAL_IPS = ('127.0.0.1', )
 
+CORS_ORIGIN_ALLOW_ALL = True
 JSON_API_FORMAT_FIELD_NAMES = 'camelize'
 JSON_API_FORMAT_TYPES = 'camelize'
 REST_FRAMEWORK = {
