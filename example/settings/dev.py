@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'example',
     'debug_toolbar',
     'django_filters',
+    'corsheaders',
 ]
 
 TEMPLATES = [
@@ -61,7 +62,17 @@ SECRET_KEY = 'abc123'
 PASSWORD_HASHERS = ('django.contrib.auth.hashers.UnsaltedMD5PasswordHasher', )
 
 MIDDLEWARE = (
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
+)
+
+CORS_ORIGIN_WHITELIST = (
+    'google.com',
+    'hostname.example.com',
+    'localhost:8000',
+    '127.0.0.1:9000',
+    'localhost:3000',
 )
 
 INTERNAL_IPS = ('127.0.0.1', )
